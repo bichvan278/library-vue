@@ -83,7 +83,10 @@ export default {
 					if (userCred.username === 'test123' && userCred.password === 'test123') {
 						this.$emit('authenticated', true);
 						this.$router.replace({ name: 'homepage' });
-					} else {
+					}else if(userCred.username === 'admin' && userCred.password === 'admin123'){
+						this.$emit('authenticated', true);
+						this.$router.replace({ name: 'adminpage' });
+					}else {
 						console.log('The username and / or password is incorrect');
 					}
 				} else {

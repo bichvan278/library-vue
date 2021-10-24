@@ -33,10 +33,10 @@
                     </form>
                 </div>
                 <!-- Thong tin muon sach -->
-                <div class="col-md-6" :books="cartBooks">
+                <div class="col-md-6">
                     <p class="title">Thông tin chi tiết sách</p>
                     <hr>
-                    <table class="table" v-for="book in books" :key="book.id">
+                    <table class="table" v-for="(item, index) in cart" :key="index"> 
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">ID</th>
@@ -47,11 +47,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td scope="row">{{book.id}}</td>               
-                            <td>{{book.name}}</td>
+                            <td scope="row">{{item.id}}</td>               
+                            <td>{{item.name}}</td>
                             <td>img</td>
-                            <td>{{book.qty}}</td>
-                        </tr>
+                            <td>1</td>
+                        </tr>     
                     </tbody>
                     </table>
                 </div>
@@ -65,6 +65,7 @@ import HeaderComp from './../partial/HeaderComp.vue';
 
 export default {
     name: 'BookForm',
+    props: ["cart"],
     components: {
         HeaderComp
     }

@@ -1,8 +1,5 @@
 <template>
-<div class="container page-wrapper">
-  <div class="page-inner">
-    <div class="row" style="margin-left: 25px">
-      <div class="el-wrapper" v-for="book in books" :key="book.id">
+      <div class="el-wrapper">
         <div class="box-up">
           <img class="img-book" src="./../../assets/img/book rev.png" alt="">
           <div class="img-info">
@@ -19,7 +16,7 @@
             <div class="h-bg-inner"></div>
           </div>
 
-          <button class="cart" @click="addBooks(book)">
+          <button class="cart" @click="$emit('add-books',book)">
             <span class="price">$120</span>
             <span class="add-to-cart">
               <span class="txt">Add in cart</span>
@@ -27,9 +24,6 @@
           </button>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 </template>
 
 <script>
@@ -37,22 +31,7 @@
 
 export default {
     name: 'BookCard',
-    data () {
-      return {
-        cart: [],
-        books: [
-          {id: "1", name: "LAP TRINH DI DONG", author: "Khoa CNTT-TT", qty: "2"},
-          {id: "2", name: "LAP TRINH CAN BAN", author: "Khoa CNTT-TT", qty: "5"},
-          {id: "3", name: "LAP TRINH HUONG DOI TUONG", author: "Khoa CNTT-TT", qty: "6"},
-          {id: "4", name: "LAP TRINH WEB", author: "Khoa CNTT-TT", qty: "5"}
-        ]
-      };
-    },
-    methods: {
-      addBooks (book) {
-        console.log(book);
-      }
-    }
+    props: ['book']
     // async mounted () {
     //     await axios .get('http://admin:12345@127.0.0.1:5984/library/')
     //                 .then(res => {
@@ -95,16 +74,6 @@ html {
 
 body {
   background-color: #f7f7f7;
-}
-
-.page-wrapper {
-  height: 100%;
-  display: table;
-}
-
-.page-wrapper .page-inner {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .img-book {
