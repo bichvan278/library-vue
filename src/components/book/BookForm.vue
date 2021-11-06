@@ -36,7 +36,7 @@
                 <div class="col-md-6">
                     <p class="title">Thông tin chi tiết sách</p>
                     <hr>
-                    <table class="table" v-for="(item, index) in cart" :key="index"> 
+                    <table class="table"> 
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">ID</th>
@@ -46,7 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr v-for="(item, index) in items" :key="index">
                             <td scope="row">{{item.id}}</td>               
                             <td>{{item.name}}</td>
                             <td>img</td>
@@ -65,7 +65,7 @@ import HeaderComp from './../partial/HeaderComp.vue';
 
 export default {
     name: 'BookForm',
-    props: ["cart"],
+    props: ["items"],
     components: {
         HeaderComp
     }

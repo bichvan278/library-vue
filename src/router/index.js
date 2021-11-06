@@ -13,7 +13,7 @@ import UserProfile from '@/components/user/UserProfile';
 Vue.use(Router);
 
 const router = new Router({
-	mode: 'history',
+	// mode: 'history',
 	routes: [
 		{
 			path: '/',

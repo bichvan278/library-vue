@@ -7,7 +7,7 @@
               <span class="p-name">{{book.name}}</span>
               <span class="p-company">{{book.author}}</span>
             </div>
-            <div class="a-size">Available: <span class="size">{{book.qty}}</span></div>
+            <div class="a-size">Available: <span class="size">{{book.amount}}</span></div>
           </div>
         </div>
 

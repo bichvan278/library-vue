@@ -6,7 +6,7 @@
     <div class="container page-wrapper">
       <div class="page-inner">
         <div class="row" style=" margin-left: 25px;">
-          <book-card  v-for="book in books" :key="book.id"
+          <book-card  v-for="book in library" :key="book.id"
                       v-on:add-books="addBooks(book)"
                       :book="book"></book-card>
         </div>
@@ -18,19 +18,30 @@
 <script>
 import HeaderComp from './partial/HeaderComp.vue';
 import BookCard from './book/BookCard.vue';
+import axios from 'axios';
+
 
 export default {
   name:'HomePage',
   data () {
       return {
         cart: [],
-        books: [
-          {id: "1", name: "LAP TRINH DI DONG", author: "Khoa CNTT-TT", qty: "2"},
-          {id: "2", name: "LAP TRINH CAN BAN", author: "Khoa CNTT-TT", qty: "5"},
-          {id: "3", name: "LAP TRINH HUONG DOI TUONG", author: "Khoa CNTT-TT", qty: "6"},
-          {id: "4", name: "LAP TRINH WEB", author: "Khoa CNTT-TT", qty: "5"}
-        ]
+        library: []
+        // books: [
+        //   {id: "1", name: "LAP TRINH DI DONG", author: "Khoa CNTT-TT", qty: "2"},
+        //   {id: "2", name: "LAP TRINH CAN BAN", author: "Khoa CNTT-TT", qty: "5"},
+        //   {id: "3", name: "LAP TRINH HUONG DOI TUONG", author: "Khoa CNTT-TT", qty: "6"},
+        //   {id: "4", name: "LAP TRINH WEB", author: "Khoa CNTT-TT", qty: "5"}
+        // ]
       };
+  },
+  async created() {
+    try {
+      const response = await axios.get(`http://localhost:3000/books`)
+      this.library = response.data
+    } catch (e) {
+      console.error(e)
+    }
   },
   methods: {
       addBooks (book) {
